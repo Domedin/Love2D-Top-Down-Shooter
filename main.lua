@@ -3,7 +3,6 @@ require("sprites")
 
 function love.load()
     Player:load()
-    
     Sprites:load()
 end
 

@@ -40,7 +40,11 @@ function Player:normalizeMovement()
     end
 end
 
+function Player:playerMouseAngle()
+    return math.atan2(Player.y - love.mouse.getY(), Player.x - love.mouse.getX()) + 3 * math.pi / 2
+end
+
 function Player:draw()
-    love.graphics.draw(Sprites.idlePlayer, Player.x, Player.y)
+    love.graphics.draw(Sprites.idlePlayer, Player.x, Player.y, Player:playerMouseAngle(), nil, nil, Sprites.idlePlayer:getWidth() / 2, Sprites.idlePlayer:getHeight() * 8 / 13)
 end
 
