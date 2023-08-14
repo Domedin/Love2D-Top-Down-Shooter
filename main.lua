@@ -9,6 +9,7 @@ end
 
 function love.update(dt)
     Player:update(dt)
+    Enemies:update(dt)
 end
 
 function love.draw()
