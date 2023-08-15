@@ -2,16 +2,21 @@ require("player")
 require("sprites")
 require("enemies")
 require("bullet")
+require("gameManager")
+require("enemySpawner")
 
 function love.load()
     Player:load()
     Sprites:load()
+    Gamemanager:load()
+    EnemySpawner:load()
 end
 
 function love.update(dt)
     Player:update(dt)
     Enemies:update(dt)
     Bullets:update(dt)
+    EnemySpawner:update(dt)
 end
 
 function love.draw()
@@ -19,12 +24,6 @@ function love.draw()
     Player:draw()
     Enemies:draw()
     Bullets:draw()
-end
-
-function love.keypressed(key)
-    if key == "space" then
-        Enemies:spawnEnemy()
-    end
 end
 
 function love.mousepressed(x, y, button)

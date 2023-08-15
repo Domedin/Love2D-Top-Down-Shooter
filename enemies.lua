@@ -2,17 +2,36 @@ Enemies = {}
 
 function Enemies:spawnEnemy()
     local Enemy = {}
-    Enemy.x = math.random(0, love.graphics.getWidth())
-    Enemy.y = math.random(0, love.graphics.getHeight())
+    Enemy.x = 0
+    Enemy.y = 0
     Enemy.speed = 120
     Enemy.dead = false
     table.insert(Enemies, Enemy)
+
+    local side = math.random(1, 4)
+
+    if side == 1 then
+        Enemy.x = -30
+        Enemy.y = math.random(0, love.graphics.getHeight())
+    elseif side == 2 then
+        Enemy.x = love.graphics.getWidth() + 30
+        Enemy.y = math.random(0, love.graphics.getHeight())
+    elseif side == 3 then
+        Enemy.x = math.random(0, love.graphics.getWidth())
+        Enemy.y = -30
+    elseif side == 4 then
+        Enemy.x = math.random(0, love.graphics.getWidth())
+        Enemy.y = love.graphics.getHeight() + 30
+    end
 end
 
 function Enemies:update(dt)
     Enemies:movementAndPlayerCollisions(dt)
     Enemies:bulletCollisions()
+    Enemies:checkDead()
+end
 
+function Enemies:checkDead()
     for i=#Enemies,1,-1 do
         local enemyNum = Enemies[i]
         if enemyNum.dead == true then
@@ -39,6 +58,7 @@ function Enemies:movementAndPlayerCollisions(dt)
         if Enemies:distanceBetween(enemyNum.x, enemyNum.y, Player.x, Player.y) < 28 then
             for i,enemyNum in ipairs(Enemies) do
                 Enemies[i] = nil
+                gameState = 1
             end
         end
     end
