@@ -58,7 +58,9 @@ function Enemies:movementAndPlayerCollisions(dt)
         if Enemies:distanceBetween(enemyNum.x, enemyNum.y, Player.x, Player.y) < 28 then
             for i,enemyNum in ipairs(Enemies) do
                 Enemies[i] = nil
-                gameState = 1
+                Gamemanager.gamestate = 1
+                Player.x = love.graphics.getWidth() / 2
+                Player.y = love.graphics.getHeight() / 2
             end
         end
     end

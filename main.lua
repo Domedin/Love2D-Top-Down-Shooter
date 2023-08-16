@@ -24,10 +24,5 @@ function love.draw()
     Player:draw()
     Enemies:draw()
     Bullets:draw()
-end
-
-function love.mousepressed(x, y, button)
-    if button == 1 then
-        Bullets:spawnBullet()
-    end
+    Gamemanager:draw()
 end

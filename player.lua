@@ -12,17 +12,19 @@ function Player:update(dt)
 end
 
 function Player:movement(dt)
-    if love.keyboard.isDown("w") then
-        Player.y = Player.y - Player.speed * dt
-    end
-    if love.keyboard.isDown("a") then
-        Player.x = Player.x - Player.speed * dt
-    end
-    if love.keyboard.isDown("s") then
-        Player.y = Player.y + Player.speed * dt
-    end
-    if love.keyboard.isDown("d") then
-        Player.x = Player.x + Player.speed * dt
+    if Gamemanager.gamestate == 2 then
+        if love.keyboard.isDown("w") then
+            Player.y = Player.y - Player.speed * dt
+        end
+        if love.keyboard.isDown("a") then
+            Player.x = Player.x - Player.speed * dt
+        end
+        if love.keyboard.isDown("s") then
+            Player.y = Player.y + Player.speed * dt
+        end
+        if love.keyboard.isDown("d") then
+            Player.x = Player.x + Player.speed * dt
+        end
     end
 end
 

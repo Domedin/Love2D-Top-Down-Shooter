@@ -16,6 +16,15 @@ function Bullets:update(dt)
     Bullets:removeBullets()
 end
 
+function love.mousepressed(x, y, button)
+    if button == 1 and Gamemanager.gamestate == 2 then
+        Bullets:spawnBullet()
+    elseif button == 1 and Gamemanager.gamestate == 1 then
+        Gamemanager.gamestate = 2
+        EnemySpawner.timeBetweenSpawns = 0.7
+    end
+end
+
 function Bullets:moveBullets(dt)
     for i,bulletNum in ipairs(Bullets) do
         bulletNum.x = bulletNum.x + math.cos(bulletNum.direction) * bulletNum.speed * dt
