@@ -13,16 +13,16 @@ end
 
 function Player:movement(dt)
     if Gamemanager.gamestate == 2 then
-        if love.keyboard.isDown("w") then
+        if love.keyboard.isDown("w") and Player.y > 0 then
             Player.y = Player.y - Player.speed * dt
         end
-        if love.keyboard.isDown("a") then
+        if love.keyboard.isDown("a") and Player.x > 0 then
             Player.x = Player.x - Player.speed * dt
         end
-        if love.keyboard.isDown("s") then
+        if love.keyboard.isDown("s") and Player.y < love.graphics.getHeight() then
             Player.y = Player.y + Player.speed * dt
         end
-        if love.keyboard.isDown("d") then
+        if love.keyboard.isDown("d") and Player.x < love.graphics.getWidth() then
             Player.x = Player.x + Player.speed * dt
         end
     end

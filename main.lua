@@ -10,6 +10,7 @@ function love.load()
     Sprites:load()
     Gamemanager:load()
     EnemySpawner:load()
+    Enemies:load()
 end
 
 function love.update(dt)

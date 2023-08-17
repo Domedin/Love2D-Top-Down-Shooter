@@ -1,5 +1,9 @@
 Enemies = {}
 
+function Enemies:load()
+    math.randomseed(os.time())
+end
+
 function Enemies:spawnEnemy()
     local Enemy = {}
     Enemy.x = 0
@@ -46,6 +50,7 @@ function Enemies:bulletCollisions()
             if Enemies:distanceBetween(enemyNum.x, enemyNum.y, bulletNum.x, bulletNum.y) < 40 then
                 enemyNum.dead = true
                 bulletNum.dead = true
+                Gamemanager.score = Gamemanager.score + 1
             end
         end
     end
