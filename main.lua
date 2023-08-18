@@ -11,6 +11,7 @@ function love.load()
     Gamemanager:load()
     EnemySpawner:load()
     Enemies:load()
+    Bullets:load()
 end
 
 function love.update(dt)

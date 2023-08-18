@@ -1,5 +1,9 @@
 Bullets = {}
 
+function Bullets:load()
+    coolDown = 0
+end
+
 function Bullets:spawnBullet()
     local bullet = {}
     bullet.x = Player.x
@@ -14,12 +18,21 @@ function Bullets:update(dt)
     Bullets:moveBullets(dt)
     Bullets:outOfBounds()
     Bullets:removeBullets()
+    
+    if coolDown > 0 then
+        coolDown = math.max(0, coolDown - dt)
+    end
+    if Gamemanager.gamestate == 2 then
+        if love.mouse.isDown(1)==true then
+            if coolDown <= 0 then
+                Bullets:spawnBullet()
+                coolDown = 0.33
+            end
+        end
+    end
 end
 
 function love.mousepressed(x, y, button)
-    if button == 1 and Gamemanager.gamestate == 2 then
-        Bullets:spawnBullet()
-    end
     if button == 1 and Gamemanager.gamestate == 1 then
         Gamemanager.gamestate = 2
         EnemySpawner.timeBetweenSpawns = 0.7
