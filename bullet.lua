@@ -26,7 +26,7 @@ function Bullets:update(dt)
         if love.mouse.isDown(1)==true then
             if coolDown <= 0 then
                 Bullets:spawnBullet()
-                coolDown = 0.33
+                coolDown = 0.1
             end
         end
     end
