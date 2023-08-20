@@ -29,13 +29,12 @@ function Player:movement(dt)
 end
 
 function Player:normalizeMovement()
-    if love.keyboard.isDown("w") and love.keyboard.isDown("a") then
-        Player.speed = 127.278
-    elseif love.keyboard.isDown("w") and love.keyboard.isDown("d") then
-        Player.speed = 127.278
-    elseif love.keyboard.isDown("s") and love.keyboard.isDown("d") then
-        Player.speed = 127.278
-    elseif love.keyboard.isDown("a") and love.keyboard.isDown("a") then
+    
+
+    if love.keyboard.isDown("w") and love.keyboard.isDown("a") or
+       love.keyboard.isDown("w") and love.keyboard.isDown("d") or
+       love.keyboard.isDown("s") and love.keyboard.isDown("d") or
+       love.keyboard.isDown("s") and love.keyboard.isDown("a") then
         Player.speed = 127.278
     else
         Player.speed = 180
@@ -43,7 +42,8 @@ function Player:normalizeMovement()
 end
 
 function Player:playerMouseAngle()
-    return math.atan2(Player.y - love.mouse.getY(), Player.x - love.mouse.getX()) + 3 * math.pi / 2
+    local angleOffset = 3 * math.pi / 2
+    return math.atan2(Player.y - love.mouse.getY(), Player.x - love.mouse.getX()) + angleOffset
 end
 
 function Player:draw()
