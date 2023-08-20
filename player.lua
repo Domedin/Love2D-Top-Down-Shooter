@@ -47,6 +47,5 @@ function Player:playerMouseAngle()
 end
 
 function Player:draw()
-    love.graphics.draw(Sprites.idlePlayer, Player.x, Player.y, Player:playerMouseAngle(), nil, nil, Sprites.idlePlayer:getWidth() / 2, Sprites.idlePlayer:getHeight() * 8 / 13)
+    love.graphics.draw(Sprites.Player, Player.x, Player.y, Player:playerMouseAngle(), nil, nil, Sprites.Player:getWidth() / 2, Sprites.Player:getHeight() * 9 / 13)
 end
-
