@@ -57,15 +57,22 @@ function Enemies:bulletCollisions()
 end
 
 function Enemies:movementAndPlayerCollisions(dt)
+    local playerHealth = 2
+
     for i,enemyNum in ipairs(Enemies) do
         enemyNum.x = enemyNum.x + math.cos(Enemies:enemyPlayerAngle(enemyNum)) * enemyNum.speed * dt
         enemyNum.y = enemyNum.y + math.sin(Enemies:enemyPlayerAngle(enemyNum)) * enemyNum.speed * dt
         if Enemies:distanceBetween(enemyNum.x, enemyNum.y, Player.x, Player.y) < 28 then
-            for i,enemyNum in ipairs(Enemies) do
-                Enemies[i] = nil
-                Gamemanager.gamestate = 1
-                Player.x = love.graphics.getWidth() / 2
-                Player.y = love.graphics.getHeight() / 2
+            playerHealth = playerHealth - 1
+            if playerHealth == 1 then
+                
+            elseif playerHealth == 0 then
+                for i,enemyNum in ipairs(Enemies) do
+                    Enemies[i] = nil
+                    Gamemanager.gamestate = 1
+                    Player.x = love.graphics.getWidth() / 2
+                    Player.y = love.graphics.getHeight() / 2
+                end
             end
         end
     end
